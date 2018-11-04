@@ -9,15 +9,14 @@ import java.util.Random;
 public class Monster {
 
 
-    /*public int randomX(){
+    public int randomX(){
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int k=0; k<4; k++) {
             list.add(new Integer(k));
 
         }
         Collections.shuffle(list);
-
-    }/**/
+    }
     public int randomY(){
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int k=0; k<9; k++) {
@@ -38,8 +37,8 @@ public class Monster {
         catch(InterruptedException e){
             Thread.currentThread().interrupt();
         }
-    }*/
-    /*public void generateMonster() {
+    }
+    public void generateMonster() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (Grille.getGrille()[i][j] == 0) {
@@ -47,7 +46,7 @@ public class Monster {
                 }
             }
         }
-    }*/
+    }
 
     public void monsterDown(){
         for (int i = 0; i < 10; i++) {
