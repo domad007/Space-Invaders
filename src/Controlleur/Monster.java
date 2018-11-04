@@ -17,7 +17,7 @@ public class Monster {
         }
         Collections.shuffle(list);
 
-    }
+    }/**/
     public int randomY(){
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int k=0; k<9; k++) {
