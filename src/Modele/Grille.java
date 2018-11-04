@@ -5,7 +5,7 @@ public class Grille {
     private static int [][] grille = new int[10][10]; //Tableau à 2 dimensions
 
     private static int VIDE = 0; //Vide initié à 0
-
+    private static int MONSTRE = 2;
 /*
     On parcours toute la grille
     Chaque position du tableau est égale à 0 après le parcours
@@ -34,6 +34,9 @@ public class Grille {
             for (int cellule : ligne) {
                 if (cellule == VIDE) {
                     System.out.print(' ');
+                }
+                else if(cellule == MONSTRE){
+                    System.out.print('O');
                 }
                 else {
                     System.out.print('x');
