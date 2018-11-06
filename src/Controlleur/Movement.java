@@ -1,7 +1,6 @@
 package Controlleur;
 import java.util.Scanner;
 import Modele.Grille;
-
 public class Movement {
 
     private Scanner scanner;
@@ -14,6 +13,12 @@ public class Movement {
                 left();
                 break;
             case "d":
+                right();
+                break;
+            case "Q" :
+                left();
+                break;
+            case "D" :
                 right();
                 break;
         }

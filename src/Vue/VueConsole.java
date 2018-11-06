@@ -14,9 +14,7 @@ public class VueConsole {
         do {
             gri.affiche(gri.getGrille());
             move.move();
-            monst.generateMonster();
             monst.monsterDown();
-
 
         } while(true);
     }
