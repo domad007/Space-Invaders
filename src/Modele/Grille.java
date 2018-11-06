@@ -5,6 +5,7 @@ public class Grille {
     private static int [][] grille = new int[10][10]; //Tableau à 2 dimensions
 
     private static int VIDE = 0; //Vide initié à 0
+    private static int VAISSEAU = 1;
     private static int MONSTRE = 2;
 /*
     On parcours toute la grille
@@ -47,6 +48,7 @@ public class Grille {
             System.out.println();
         }
     }
+
     /*
         Getters et setteurs pour les autres classes qui en ont besoin
      */

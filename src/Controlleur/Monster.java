@@ -30,17 +30,6 @@ public class Monster {
         }
     }
 
-    public void waves() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (Grille.getGrille()[5][j] == 2) { //si mob present a la ligne 5, generation de nouvx mobs
-                    for (int k = 0; k <= numbMons(); k++) {
-                        Grille.getGrille()[0][randomY()] = 2;
-                    }
-                }
-            }
-        }
-    }
 
     public void monsterDown(){
         for (int i = 0; i < 10; i++) {
@@ -58,6 +47,19 @@ public class Monster {
                 }
             }
         }
+
+    public void waves() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (Grille.getGrille()[5][j] == 2) { //si mob present a la ligne 5, generation de nouvx mobs
+                    for (int k = 0; k <= numbMons(); k++) {
+                        Grille.getGrille()[0][randomY()] = 2;
+                    }
+                }
+            }
+        }
+    }
+
 
     /*public static void main(String[] args){
         Monster monst = new Monster();

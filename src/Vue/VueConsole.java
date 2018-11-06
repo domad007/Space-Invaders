@@ -4,7 +4,7 @@ import Controlleur.*;
 public class VueConsole {
 
     public static void main(String[] args){
-        Movement move = new Movement();
+        Vaisseau vaiss = new Vaisseau();
         Grille gri = new Grille();
         Monster monst = new Monster();
         gri.initialise(gri.getGrille());
@@ -13,8 +13,9 @@ public class VueConsole {
 
         do {
             gri.affiche(gri.getGrille());
-            move.move();
+            vaiss.move();
             monst.monsterDown();
+
 
         } while(true);
     }
