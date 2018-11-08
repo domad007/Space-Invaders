@@ -6,10 +6,8 @@ import Modele.Grille;
 
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Scanner;
 
 public class XSpaceVueConsole extends XSpaceVue implements Observer {
-    Scanner scanner;
 
 
     public XSpaceVueConsole(Grille model, Vaisseau controllerVaiss, Monster controllerMonst){
@@ -23,15 +21,15 @@ public class XSpaceVueConsole extends XSpaceVue implements Observer {
     }
 
     public void play() {
-
         model.initialise(model.getGrille());
+        controllerVaiss.secondPlayer();
         model.getGrille()[9][4] = 1;
-        controllerMonst.generateMonster();
-
+        controllerMonst.monsters();
         do {
             model.affiche(model.getGrille());
             controllerVaiss.moveVaiss();
             controllerMonst.monsterDown();
+            //controllerVaiss.attack();
         }while(true);
     }
 }

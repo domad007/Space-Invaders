@@ -1,15 +1,16 @@
 package Modele;
 
 import java.util.Observable;
-
 public class Grille extends Observable {
 
 
     private int [][] grille = new int[10][10]; //Tableau à 2 dimensions
 
-    private static int VIDE = 0; //Vide initié à 0
-    private static int VAISSEAU = 1;
-    private static int MONSTRE = 2;
+    private static int vide = 0; //Vide initié à 0
+    private static int vaisseau = 1;
+    private static int monstre = 2;
+    private static int vaisseau2 = 3;
+
 /*
     On parcours toute la grille
     Chaque position du tableau est égale à 0 après le parcours
@@ -18,7 +19,7 @@ public class Grille extends Observable {
     public void initialise(int [][] grille){
         for(int i=0; i<grille.length; i++){
             for(int j=0; j<grille[i].length; j++){
-                grille[i][j] = VIDE;
+                grille[i][j] = vide;
             }
         }
     }
@@ -36,16 +37,12 @@ public class Grille extends Observable {
         for (int[] ligne : grille) {
             System.out.print("|");
             for (int cellule : ligne) {
-                if (cellule == VIDE) {
-                    System.out.print(' ');
+                switch(cellule){
+                    case 0 : System.out.print(' '); break;
+                    case 1 : System.out.print('X'); break;
+                    case 2 : System.out.print('O'); break;
+                    case 3 : System.out.print('V'); break;
                 }
-                else if(cellule == MONSTRE){
-                    System.out.print('O');
-                }
-                else {
-                    System.out.print('x');
-                }
-
                 System.out.print("|");
             }
             System.out.println();
@@ -63,4 +60,5 @@ public class Grille extends Observable {
         setChanged();
         notifyObservers();
     }
+
 }
