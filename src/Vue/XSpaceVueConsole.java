@@ -6,7 +6,6 @@ import Modele.Grille;
 
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Scanner;
 
 public class XSpaceVueConsole extends XSpaceVue implements Observer {
 
