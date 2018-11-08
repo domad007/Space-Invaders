@@ -1,8 +1,11 @@
 package Modele;
-public class Grille {
+
+import java.util.Observable;
+
+public class Grille extends Observable {
 
 
-    private static int [][] grille = new int[10][10]; //Tableau à 2 dimensions
+    private int [][] grille = new int[10][10]; //Tableau à 2 dimensions
 
     private static int VIDE = 0; //Vide initié à 0
     private static int VAISSEAU = 1;
@@ -12,7 +15,7 @@ public class Grille {
     Chaque position du tableau est égale à 0 après le parcours
  */
 
-    public static void initialise(int [][] grille){
+    public void initialise(int [][] grille){
         for(int i=0; i<grille.length; i++){
             for(int j=0; j<grille[i].length; j++){
                 grille[i][j] = VIDE;
@@ -27,7 +30,7 @@ public class Grille {
         Si la position est à 0 donc qui est vide on imprime ' '
         Si la position est à 1 donc qui as le X dans ce cas on imprime x
      */
-    public static void affiche(int [][] grille) {
+    public void affiche(int [][] grille) {
         System.out.println();
 
         for (int[] ligne : grille) {
@@ -48,15 +51,16 @@ public class Grille {
             System.out.println();
         }
     }
-
     /*
         Getters et setteurs pour les autres classes qui en ont besoin
      */
-    public static int[][] getGrille() {
+    public  int[][] getGrille() {
         return grille;
     }
 
-    public static void setGrille(int[][] grille) {
-        Grille.grille = grille;
+    public void setGrille(int[][] grille) {
+        this.grille = grille;
+        setChanged();
+        notifyObservers();
     }
 }

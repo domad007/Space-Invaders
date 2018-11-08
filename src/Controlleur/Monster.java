@@ -1,11 +1,20 @@
 package Controlleur;
 import Modele.*;
+import Vue.XSpaceVue;
+
 import java.util.Random;
+
 
 public class Monster {
 
+    private Grille model;
+    private XSpaceVue vue = null;
+
     Random rand = new Random();
 
+    public Monster(Grille m){
+        model = m;
+    }
 
     public int numbMons(){
         int mons = rand.nextInt(7-1);
@@ -20,12 +29,12 @@ public class Monster {
     public void generateMonster() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (Grille.getGrille()[i][j] == 0) {
-                    for(int k = 0; k<=numbMons(); k++) {
-                        Grille.getGrille()[0][randomY()] = 2;
+                if (model.getGrille()[i][j] == 0) {
+                    for (int k = 0; k <= numbMons(); k++) {
+                        model.getGrille()[0][randomY()] = 2;
                     }
                 }
-                    return;
+                return;
             }
         }
     }
@@ -34,36 +43,36 @@ public class Monster {
     public void monsterDown(){
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (Grille.getGrille()[i][j] == 2) { //s'il y a des mobs
+                if (model.getGrille()[i][j] == 2) { //s'il y a des mobs
                     int newPos = i + 1;
-                    Grille.getGrille()[newPos][j] = 2;
-                    Grille.getGrille()[i][j] = 0;
+                    model.getGrille()[newPos][j] = 2;
+                    model.getGrille()[i][j] = 0;
                     return;
                 }
-
-                else if (Grille.getGrille()[9][j] == 2) {
-                        Grille.getGrille()[9][j] = 0;
-                    }
+                else if (model.getGrille()[9][j] == 2) {
+                        model.getGrille()[9][j] = 0;
                 }
             }
         }
-
+    }
     public void waves() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (Grille.getGrille()[5][j] == 2) { //si mob present a la ligne 5, generation de nouvx mobs
+                if (model.getGrille()[5][j] == 2) { //si mob present a la ligne 5, generation de nouvx mobs
                     for (int k = 0; k <= numbMons(); k++) {
-                        Grille.getGrille()[0][randomY()] = 2;
+                        model.getGrille()[0][randomY()] = 2;
                     }
                 }
             }
         }
     }
-
+    public void addView(XSpaceVue vue){
+        this.vue = vue;
+    }
 
     /*public static void main(String[] args){
         Monster monst = new Monster();
-        Grille gri = new Grille();
+        model gri = new model();
         gri.initialise(gri.getGrille());
 
         do {
@@ -75,7 +84,6 @@ public class Monster {
 
 
     }*/
-
 
 
 
