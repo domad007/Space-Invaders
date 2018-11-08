@@ -10,7 +10,7 @@ public class Monster {
     private Grille model;
     private XSpaceVue vue = null;
 
-    Random rand = new Random();
+    private Random rand = new Random();
 
     public Monster(Grille m){
         model = m;
@@ -26,7 +26,7 @@ public class Monster {
     }
 
 
-    public void generateMonster() {
+    public void monsters() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (model.getGrille()[i][j] == 0) {
