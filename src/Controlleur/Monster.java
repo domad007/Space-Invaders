@@ -17,7 +17,7 @@ public class Monster {
     }
 
     public int numbMons(){
-        int mons = rand.nextInt(7-1);
+        int mons = 3+rand.nextInt(5-3);
         return mons;
     }
     public int randomY(){
@@ -49,13 +49,15 @@ public class Monster {
                     model.getGrille()[i][j] = 0;
                     return;
                 }
-                else if (model.getGrille()[9][j] == 2) {
-                        model.getGrille()[9][j] = 0;
+                if (model.getGrille()[3][j] == 2) { //si mob present a la ligne 5, generation de nouvx mobs
+                    for (int k = 0; k <= numbMons(); k++) {
+                        model.getGrille()[0][randomY()] = 2;
+                    }
                 }
             }
         }
     }
-    public void waves() {
+    /*public void waves() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (model.getGrille()[5][j] == 2) { //si mob present a la ligne 5, generation de nouvx mobs
@@ -65,7 +67,7 @@ public class Monster {
                 }
             }
         }
-    }
+    }*/
     public void addView(XSpaceVue vue){
         this.vue = vue;
     }
@@ -83,8 +85,7 @@ public class Monster {
 
 
 
-    }*/
+    }
 
-
-
+*/
 }

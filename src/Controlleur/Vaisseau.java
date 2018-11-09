@@ -11,6 +11,7 @@ public class Vaisseau {
     Scanner scanner;
     private Grille model;
     private XSpaceVue vue = null;
+    private boolean position = true;
     public Vaisseau(Grille m){
         model = m;
     }
@@ -35,10 +36,11 @@ public class Vaisseau {
         }
 
     }
+
     public void left(){
         for(int i =0; i<10; i++){
             for(int j = 0; j<10; j++){
-                if(model.getGrille()[i][j] == 1){
+                if( model.getGrille()[i][j] == 1){
                     model.getGrille()[i][j] = 0;
                     int newPos = j-1;
                     model.getGrille()[i][newPos] =1 ;
@@ -48,15 +50,13 @@ public class Vaisseau {
                     model.getGrille()[9][0] = 1;
                     return;
                 }
-
             }
         }
     }
     public void right(){
-
         for(int i =0; i<10; i++){
             for(int j = 0; j<10; j++){
-                if(model.getGrille()[i][j] == 1){
+                if(model.getGrille()[i][j] ==1){
                     model.getGrille()[i][j] = 0;
                     int newPos = j+1;
                     model.getGrille()[i][newPos] =1 ;
@@ -66,24 +66,34 @@ public class Vaisseau {
                     model.getGrille()[i][9] = 1;
                     return;
                 }
-                else if (model.getGrille()[i][j] == model.getGrille()[i][j]){
+               /* else if (){
                     model.getGrille()[i][j+2] = 1;
                     return;
-                }
+                }*/
             }
         }
     }
 
 
-   /* public void attack() {
+    public void attack() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if(model.getGrille()[0][j] == 1 && model.getGrille()[i][j] == 2){
+                if(model.getGrille()[i][j] == 1){
+                    System.out.println(model.getGrille()[i-1][j] = 4);
+                }
+                else if(model.getGrille()[i][j] == 4){
                     model.getGrille()[i][j] =0;
+                    model.getGrille()[i-1][j] =4;
+                }
+                else if(model.getGrille()[1][j] == 4){
+                    model.getGrille()[1][j] = 0;
+                }
+                else if(model.getGrille()[i][j] == 2 &&model.getGrille()[i][j] == 4 ) {
+                    model.getGrille()[i][j] = 2;
                 }
             }
         }
-    }*/
+    }
 
     public void secondPlayer(){
         scanner = new Scanner(System.in);

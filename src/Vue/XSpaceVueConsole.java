@@ -22,14 +22,14 @@ public class XSpaceVueConsole extends XSpaceVue implements Observer {
 
     public void play() {
         model.initialise(model.getGrille());
-        controllerVaiss.secondPlayer();
+        //controllerVaiss.secondPlayer();
         model.getGrille()[9][4] = 1;
         controllerMonst.monsters();
         do {
             model.affiche(model.getGrille());
             controllerVaiss.moveVaiss();
             controllerMonst.monsterDown();
-            //controllerVaiss.attack();
+            controllerVaiss.attack();
         }while(true);
     }
 }
