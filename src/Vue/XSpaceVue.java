@@ -1,3 +1,6 @@
+/**
+ * @author Dominik Fiedorcczuk, Adelin Gaithier, Filipp Shatskiy 2TL
+ */
 package Vue;
 import Modele.*;
 import Controlleur.*;
@@ -11,6 +14,12 @@ public abstract class XSpaceVue implements Observer {
     protected Vaisseau controllerVaiss;
     protected Monster controllerMonst;
 
+    	/**
+    	 * Constructeur de la classe XSpaceVue
+    	 * @param model
+    	 * @param controllerVaiss
+    	 * @param controllerMonst
+    	 */
     XSpaceVue(Grille model, Vaisseau controllerVaiss, Monster controllerMonst){
         this.model = model;
         this.controllerVaiss = controllerVaiss;

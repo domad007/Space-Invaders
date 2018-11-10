@@ -1,3 +1,6 @@
+/**
+ * @author Dominik Fiedorcczuk, Adelin Gaithier, Filipp Shatskiy 2TL
+ */
 package Controlleur;
 import Modele.*;
 import Vue.XSpaceVue;
@@ -7,25 +10,40 @@ import java.util.Random;
 
 public class Monster {
 
-    private Grille model;
-    private XSpaceVue vue = null;
+    private Grille model; //initialisation de a-la grille ?
+    private XSpaceVue vue = null; //vue du GUI
 
-    private Random rand = new Random();
+    private Random rand = new Random(); //initialisation de la fonction RANDOM
 
+    /**
+     * Constructeur de la classe Monster
+     * @param m Grille dans laquelle les monstres apparaitront
+     */
     public Monster(Grille m){
         model = m;
     }
 
+    /**
+     * Initialisation aléatoire du nombre de monstres
+     * @return mons le nombre de monstres
+     */
     public int numbMons(){
         int mons = 3+rand.nextInt(5-3);
         return mons;
     }
+    
+    /**
+     * 
+     * @return
+     */
     public int randomY(){
         int y = rand.nextInt(10-0);
         return y;
     }
 
-
+    /**
+     * Permet l'apparition de monstres dans le tableau
+     */
     public void monsters() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -40,6 +58,9 @@ public class Monster {
     }
 
 
+    /**
+     * Permet le deplacement des monstres generes vers le bas
+     */
     public void monsterDown(){
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -68,6 +89,11 @@ public class Monster {
             }
         }
     }*/
+    
+    /**
+     * Permet d'afficher le jeu pour le MVC
+     * @param vue, vue du jeu
+     */
     public void addView(XSpaceVue vue){
         this.vue = vue;
     }
