@@ -60,7 +60,7 @@ public class Grille extends Observable {
 
     public void setGrille(int[][] grille) {
         this.grille = grille;
-        setChanged();
+        setChanged(); //actualise la grille à chaque mouvement
         notifyObservers();
     }
 }
