@@ -3,6 +3,7 @@ import Modele.Grille;
 import Vue.XSpaceVue;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,6 +16,9 @@ public class Vaisseau {
     public Vaisseau(Grille m){
         model = m;
     }
+    private static int pts = 0;
+
+
 
     public void moveVaiss(){
         scanner = new Scanner(System.in);
@@ -33,25 +37,8 @@ public class Vaisseau {
                 break;
             case "k" : left1();break;
             case "l": right2();break;
-            case "K" : left1();break;
-            case "L": right2();break;
         }
 
-    }
-
-    public void lifes() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (model.getGrille()[9][j] == 2) {
-                    life -=1;
-                    System.out.println("Il vous reste: "+life);
-                }
-                else if(life == 0){
-                    System.out.println("Vous avez perdu");
-                    System.exit(0);
-                }
-            }
-        }
     }
     public void left(){
         for(int i =0; i<10; i++){
@@ -75,7 +62,7 @@ public class Vaisseau {
                 if(model.getGrille()[i][j] ==1){
                     model.getGrille()[i][j] = 0;
                     int newPos = j + 1;
-                    model.getGrille()[i][j+1] =1 ;
+                    model.getGrille()[i][newPos] =1;
                     return;
                 }
                 else if(model.getGrille()[i][9] == 1){
@@ -89,8 +76,16 @@ public class Vaisseau {
             }
         }
     }
-
-
+    public void points(){
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if(model.getGrille()[i][j] == 4 && model.getGrille()[i-1][j] == 2){
+                    pts+=10;
+                    System.out.println(pts);
+                }
+            }
+        }
+    }
     public void attack() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -103,13 +98,9 @@ public class Vaisseau {
                 if(model.getGrille()[1][j] == 4){
                     model.getGrille()[1][j] = 0;
                 }
-                else if(model.getGrille()[i][j] == 2){
-                    model.getGrille()[i+1][j] = 0;
-                }
             }
         }
     }
-
     public void secondPlayer(){
         scanner = new Scanner(System.in);
         System.out.println("Desirez vous jouer à 2 ?[Oui/Non]");
