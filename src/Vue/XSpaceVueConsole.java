@@ -14,8 +14,7 @@ public class XSpaceVueConsole extends XSpaceVue implements Observer {
         super(model, controllerVaiss, controllerMonst);
         play();
     }
-    
-    //update la grille à chaque mouvement
+
     public void update(Observable o, Object arg){
        System.out.println(model.getGrille());
 
@@ -29,7 +28,7 @@ public class XSpaceVueConsole extends XSpaceVue implements Observer {
         do {
             model.affiche(model.getGrille());
             controllerVaiss.moveVaiss();
-            controllerVaiss.lifes();
+            controllerVaiss.points();
             controllerMonst.monsterDown();
             controllerVaiss.attack();
         }while(true);

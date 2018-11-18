@@ -9,9 +9,9 @@ public class Monster {
 
     private Grille model;
     private XSpaceVue vue = null;
-
+    private static int life = 3;
     private Random rand = new Random();
-
+    private static int pts = 0;
     public Monster(Grille m){
         model = m;
     }
@@ -25,7 +25,7 @@ public class Monster {
         return y;
     }
 
-    // affichage des monstres sur des cases aléatoires
+
     public void monsters() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -51,6 +51,12 @@ public class Monster {
                 }
                 else if(model.getGrille()[9][j] == 2){
                     model.getGrille()[9][j] =0;
+                    life -=1;
+                    System.out.println("Il vous reste: "+life +" vies");
+                }
+                else if(life == 0){
+                    System.out.println("Vous avez perdu");
+                    System.exit(0);
                 }
             }
         }
