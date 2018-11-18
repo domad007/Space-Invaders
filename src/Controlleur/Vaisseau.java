@@ -33,6 +33,8 @@ public class Vaisseau {
                 break;
             case "k" : left1();break;
             case "l": right2();break;
+            case "K" : left1();break;
+            case "L": right2();break;
         }
 
     }
