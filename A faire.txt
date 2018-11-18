@@ -1,5 +1,0 @@
-- gèrer vague (continuer à faire avancer la premiere vague lorsque la 2eme apparait)
-- ne pas supprimer les vaisseaux lorsqu'ils passent l'un sur l'autre
-- ne plus perdre les 3 points de vie d'un coup
-- Le laser ne tue pas d'un coup l'ennemi (ennemis à plus d'une vie (à voir en fonction des vagues))
-- test JUnit (^semaine avant la présentation)

@@ -1,6 +1,5 @@
 package Modele;
 
-import java.util.ArrayList;
 import java.util.Observable;
 
 public class Grille extends Observable {
@@ -61,7 +60,7 @@ public class Grille extends Observable {
 
     public void setGrille(int[][] grille) {
         this.grille = grille;
-        setChanged();
+        setChanged(); //actualise la grille � chaque mouvement
         notifyObservers();
     }
 }
