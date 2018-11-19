@@ -82,6 +82,7 @@ public class Vaisseau {
                 if(model.getGrille()[i][j] == 4 && model.getGrille()[i-1][j] == 2){
                     pts+=10;
                     System.out.println(pts);
+                    System.out.println("mdr");
                 }
             }
         }
