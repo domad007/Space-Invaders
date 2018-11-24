@@ -27,11 +27,11 @@ public class Monster {
 
 
     public void monsters() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 1; i < 10; i++) {
+            for (int j = 1; j < 10; j++) {
                 if (model.getGrille()[i][j] == 0) {
                     for (int k = 0; k <= numbMons(); k++) {
-                        model.getGrille()[0][randomY()] = 2;
+                        model.getGrille()[1][randomY()] = 2;
                     }
                 }
                 return;
@@ -41,10 +41,11 @@ public class Monster {
     public void monsterDown(){
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (model.getGrille()[i][j] == 2) { //s'il y a des mobs
+                if (model.getGrille()[i][j] == 2) { //s'il y a un monstre
                     int newPos = i + 1;
-                    model.getGrille()[newPos][j] = 2;
-                    model.getGrille()[i][j] = 0;
+                    model.getGrille()[newPos] = model.getGrille()[i];
+                    i = newPos;
+                    model.getGrille()[i-1] = model.getGrille()[0];
                     return;
                 }
                 else if(model.getGrille()[9][j] == 2){
@@ -63,9 +64,7 @@ public class Monster {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (model.getGrille()[5][j] == 2) { //si mob present a la ligne 5, generation de nouvx mobs
-                    for (int k = 0; k <= numbMons(); k++) {
-                        model.getGrille()[0][randomY()] = 5;
-                    }
+                    model.getGrille()[1][randomY()] = 5;
                 }
             }
         }
