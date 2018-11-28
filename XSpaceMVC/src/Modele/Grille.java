@@ -6,7 +6,7 @@ import java.util.Observable;
 public class Grille extends Observable {
 
 
-    private int [][] grille = new int[10][10]; //Tableau à 2 dimensions
+    private int [][] grille = new int[15][10]; //Tableau à 2 dimensions
 
     private static int vide = 0; //Vide initié à 0
     private static int vaisseau = 1;

@@ -27,14 +27,9 @@ public class Monster {
 
 
     public void monsters() {
-        for (int i = 1; i < 10; i++) {
-            for (int j = 1; j < 10; j++) {
-                if (model.getGrille()[i][j] == 0) {
-                    for (int k = 0; k <= numbMons(); k++) {
-                        model.getGrille()[1][randomY()] = 2;
-                    }
-                }
-                return;
+    	if (pts < 20) {
+            for (int k = 0; k <= numbMons(); k++) {
+                model.getGrille()[1][randomY()] = 2;
             }
         }
     }
@@ -48,8 +43,8 @@ public class Monster {
                     model.getGrille()[i-1] = model.getGrille()[0];
                     return;
                 }
-                else if(model.getGrille()[9][j] == 2){
-                    model.getGrille()[9][j] =0;
+                else if(model.getGrille()[14][j] == 2){
+                    model.getGrille()[13][j] =0;
                     life -=1;
                     System.out.println("Il vous reste: "+life +" vies");
                 }
@@ -61,13 +56,15 @@ public class Monster {
         }
     }
     public void waves() {
-        for (int i = 0; i < 10; i++) {
+    	for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (model.getGrille()[5][j] == 2) { //si mob present a la ligne 5, generation de nouvx mobs
-                    model.getGrille()[1][randomY()] = 5;
-                }
+            	if (pts >= 20 && model.getGrille()[5][j] == 2) {
+            		for (int k = 0; k <= numbMons(); k++) {
+            			model.getGrille()[1][randomY()] = 5;
+            		}
+            	}
             }
-        }
+    	}
     }
     public void addView(XSpaceVue vue){
         this.vue = vue;

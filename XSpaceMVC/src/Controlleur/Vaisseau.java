@@ -41,7 +41,7 @@ public class Vaisseau {
 
     }
     public void left(){
-        for(int i =0; i<10; i++){
+        for(int i =0; i<15; i++){
             for(int j = 0; j<10; j++){
                 if( model.getGrille()[i][j] == 1){
                     model.getGrille()[i][j] = 0;
@@ -49,15 +49,15 @@ public class Vaisseau {
                     model.getGrille()[i][newPos] =1 ;
                     return;
                 }
-                else if(model.getGrille()[9][0] == 1){
-                    model.getGrille()[9][0] = 1;
+                else if(model.getGrille()[14][0] == 1){
+                    model.getGrille()[14][0] = 1;
                     return;
                 }
             }
         }
     }
     public void right(){
-        for(int i =0; i<10; i++){
+        for(int i =0; i<15; i++){
             for(int j = 0; j<10; j++){
                 if(model.getGrille()[i][j] ==1){
                     model.getGrille()[i][j] = 0;
@@ -77,18 +77,18 @@ public class Vaisseau {
         }
     }
     public void points(){
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 10; j++) {
                 if(model.getGrille()[i][j] == 4 && model.getGrille()[i-1][j] == 2){
                     pts+=10;
                     System.out.println(pts);
-                    System.out.println("mdr");
+                    System.out.print(" points");
                 }
             }
         }
     }
     public void attack() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 10; j++) {
                 switch(model.getGrille()[i][j]){
                     case 1 : model.getGrille()[i-1][j] = 4;break;
