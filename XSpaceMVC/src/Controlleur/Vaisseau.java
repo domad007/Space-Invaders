@@ -19,7 +19,6 @@ public class Vaisseau {
     private static int pts = 0;
 
 
-
     public void moveVaiss(){
         scanner = new Scanner(System.in);
         switch (scanner.nextLine()) {
@@ -38,35 +37,39 @@ public class Vaisseau {
             case "k" : left1();break;
             case "l": right2();break;
         }
-
     }
     public void left(){
         for(int i =0; i<15; i++){
             for(int j = 0; j<10; j++){
-                if( model.getGrille()[i][j] == 1){
-                    model.getGrille()[i][j] = 0;
+                if( model.getGrille()[i][j] == model.getVaisseau()){
+                    model.getGrille()[i][j] = model.getVide();
                     int newPos = j-1;
-                    model.getGrille()[i][newPos] =1 ;
+                    model.getGrille()[i][newPos] =model.getVaisseau() ;
                     return;
                 }
-                else if(model.getGrille()[14][0] == 1){
-                    model.getGrille()[14][0] = 1;
+                else if(model.getGrille()[14][0] == model.getVaisseau()){
+                    model.getGrille()[14][0] = model.getVaisseau();
                     return;
                 }
             }
         }
     }
+
     public void right(){
         for(int i =0; i<15; i++){
             for(int j = 0; j<10; j++){
-                if(model.getGrille()[i][j] ==1){
-                    model.getGrille()[i][j] = 0;
+                if(model.getGrille()[i][j] ==model.getVaisseau()){
+                    model.getGrille()[i][j] = model.getVide();
                     int newPos = j + 1;
-                    model.getGrille()[i][newPos] =1;
+                    model.getGrille()[i][newPos] =model.getVaisseau();
+                    if(model.getGrille()[i][newPos] == model.getVaisseau()){
+                        model.getGrille()[i][j+2] = model.getVaisseau();
+                        model.getGrille()[i][j] = model.getVaisseau2();
+                    }
                     return;
                 }
-                else if(model.getGrille()[i][9] == 1){
-                    model.getGrille()[i][9] = 1;
+                else if(model.getGrille()[i][9] == model.getVaisseau()){
+                    model.getGrille()[i][9] = model.getVaisseau();
                     return;
                 }
                /* else if (){
@@ -79,7 +82,7 @@ public class Vaisseau {
     public void points(){
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 10; j++) {
-                if(model.getGrille()[i][j] == 4 && model.getGrille()[i-1][j] == 2){
+                if(model.getGrille()[i][j] == model.getLaser() && model.getGrille()[i-1][j] == model.monst(0)){
                     pts+=10;
                     System.out.println(pts);
                     System.out.print(" points");
@@ -91,13 +94,34 @@ public class Vaisseau {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 10; j++) {
                 switch(model.getGrille()[i][j]){
-                    case 1 : model.getGrille()[i-1][j] = 4;break;
-                    case 4 :  model.getGrille()[i][j] =0;
-                              model.getGrille()[i-1][j] =4;
+                    case 1 : model.getGrille()[i-1][j] = model.getLaser();
+                            if(pts<=20){
+                                model.getGrille()[i-1][j+1] = model.getLaser();
+                            }
+                        if(pts<=50){
+                            model.getGrille()[i-1][j-1] = model.getLaser();
+                        }
+                    break;
+                    case 3 : model.getGrille()[i][j] =model.getVide();
+                              model.getGrille()[i-1][j] =model.getLaser();
+                              if(pts<=20){
+                                  model.getGrille()[i][j] =model.getVide();
+                                  model.getGrille()[i-1][j+1] =model.getLaser();
+                              }
+                              if(pts<=50){
+                                  model.getGrille()[i][j] =model.getVide();
+                                  model.getGrille()[i-1][j-1] =model.getLaser();
+                              }
                               break;
                 }
-                if(model.getGrille()[1][j] == 4){
-                    model.getGrille()[1][j] = 0;
+                if(model.getGrille()[i][9] == model.getLaser()){
+                    model.getGrille()[i][9] = model.getVide();
+                }
+                if(model.getGrille()[i][1] == model.getLaser()){
+                    model.getGrille()[i][1] = model.getVide();
+                }
+                if(model.getGrille()[1][j] == model.getLaser()){
+                    model.getGrille()[1][j] = model.getVide();
                 }
             }
         }
@@ -107,22 +131,22 @@ public class Vaisseau {
         System.out.println("Desirez vous jouer à 2 ?[Oui/Non]");
         String reponse = scanner.nextLine().substring(0,1);
         if(reponse.equals("O") || reponse.equals("o")){
-            model.getGrille()[9][5] = 3;
+            model.getGrille()[14][5] = model.getVaisseau2();
         }
         else {
-            model.getGrille()[9][5] = 0;
+            model.getGrille()[14][5] = model.getVide();
         }
     }
     public void left1(){
         for(int i =0; i<10; i++){
             for(int j = 0; j<10; j++){
-                if(model.getGrille()[i][j] == 3){
-                    model.getGrille()[i][j] = 0;
+                if(model.getGrille()[i][j] == model.getVaisseau2()){
+                    model.getGrille()[i][j] = model.getVide();
                     int newPos = j-1;
-                    model.getGrille()[i][newPos] =3 ;
+                    model.getGrille()[i][newPos] =model.getVaisseau2() ;
                 }
-                else if(model.getGrille()[9][0] == 3){
-                    model.getGrille()[9][0] = 3;
+                else if(model.getGrille()[9][0] == model.getVaisseau2()){
+                    model.getGrille()[9][0] = model.getVaisseau2();
                     return;
                 }
 
@@ -133,14 +157,14 @@ public class Vaisseau {
 
         for(int i =0; i<10; i++){
             for(int j = 0; j<10; j++){
-                if(model.getGrille()[i][j] == 3){
-                    model.getGrille()[i][j] = 0;
+                if(model.getGrille()[i][j] == model.getVaisseau2()){
+                    model.getGrille()[i][j] = model.getVide();
                     int newPos = j+1;
-                    model.getGrille()[i][newPos] =3 ;
+                    model.getGrille()[i][newPos] =model.getVaisseau2() ;
                     return;
                 }
-                else if(model.getGrille()[i][9] == 3){
-                    model.getGrille()[i][9] = 3;
+                else if(model.getGrille()[i][9] == model.getVaisseau2()){
+                    model.getGrille()[i][9] = model.getVaisseau2();
                     return;
                 }
 

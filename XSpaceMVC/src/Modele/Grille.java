@@ -1,6 +1,7 @@
 package Modele;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 
 public class Grille extends Observable {
@@ -8,12 +9,19 @@ public class Grille extends Observable {
 
     private int [][] grille = new int[15][10]; //Tableau à 2 dimensions
 
-    private static int vide = 0; //Vide initié à 0
-    private static int vaisseau = 1;
-    private static int monstre = 2;
-    private static int monstre2 = 5;
-    private static int vaisseau2 = 3;
-    private static int laser = 4;
+    private int vide = 0; //Vide initié à 0
+    private int vaisseau = 1;
+    private int vaisseau2 = 2;
+    private int laser = 3;
+
+    HashMap<Integer, Character> monsters = new HashMap<>();
+
+    public char monst(int index){
+        monsters.put(0,'O');
+        monsters.put(1, 'L');
+        return monsters.get(index);
+    }
+
 /*
     On parcours toute la grille
     Chaque position du tableau est égale à 0 après le parcours
@@ -26,6 +34,8 @@ public class Grille extends Observable {
             }
         }
     }
+
+
 
 
     /*
@@ -43,11 +53,15 @@ public class Grille extends Observable {
                 switch(cellule){
                     case 0 : System.out.print(' ') ; break;
                     case 1:  System.out.print('X') ; break;
-                    case 2:  System.out.print('O') ; break;
-                    case 3:  System.out.print('V') ; break;
-                    case 4:  System.out.print('|') ; break;
+                    case 2:  System.out.print('V') ; break;
+                    case 3:  System.out.print('|') ; break;
                     case 5:  System.out.print('L') ; break;
-
+                }
+                if(cellule == monst(0)){
+                    System.out.print(monst(0));
+                }
+                if(cellule == monst(1)){
+                    System.out.print(monst(1));
                 }
 
                 System.out.print("|");
@@ -64,6 +78,46 @@ public class Grille extends Observable {
 
     public void setGrille(int[][] grille) {
         this.grille = grille;
+        setChanged();
+        notifyObservers();
+    }
+
+    public int getVide() {
+        return vide;
+    }
+
+    public void setVide(int vide) {
+        this.vide = vide;
+        setChanged();
+        notifyObservers();
+    }
+
+    public int getVaisseau() {
+        return vaisseau;
+    }
+
+    public void setVaisseau(int vaisseau) {
+        this.vaisseau = vaisseau;
+        setChanged();
+        notifyObservers();
+    }
+
+    public int getVaisseau2() {
+        return vaisseau2;
+    }
+
+    public void setVaisseau2(int vaisseau2) {
+        this.vaisseau2 = vaisseau2;
+        setChanged();
+        notifyObservers();
+    }
+
+    public int getLaser() {
+        return laser;
+    }
+
+    public void setLaser(int laser) {
+        this.laser = laser;
         setChanged();
         notifyObservers();
     }

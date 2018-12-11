@@ -29,22 +29,29 @@ public class Monster {
     public void monsters() {
     	if (pts < 20) {
             for (int k = 0; k <= numbMons(); k++) {
-                model.getGrille()[1][randomY()] = 2;
+                model.getGrille()[1][randomY()] = model.monst(0);
             }
         }
     }
     public void monsterDown(){
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (model.getGrille()[i][j] == 2) { //s'il y a un monstre
+                if (model.getGrille()[i][j] == model.monst(0)) { //s'il y a un monstre
                     int newPos = i + 1;
                     model.getGrille()[newPos] = model.getGrille()[i];
                     i = newPos;
                     model.getGrille()[i-1] = model.getGrille()[0];
                     return;
                 }
-                else if(model.getGrille()[14][j] == 2){
-                    model.getGrille()[13][j] =0;
+                if (model.getGrille()[i][j] == model.monst(1)) { //s'il y a un monstre
+                    int newPos = i + 1;
+                    model.getGrille()[newPos] = model.getGrille()[i];
+                    i = newPos;
+                    model.getGrille()[i-1] = model.getGrille()[0];
+                    return;
+                }
+                else if(model.getGrille()[14][j] ==model.monst(0)){
+                    model.getGrille()[13][j] =model.getVide();
                     life -=1;
                     System.out.println("Il vous reste: "+life +" vies");
                 }
@@ -58,9 +65,9 @@ public class Monster {
     public void waves() {
     	for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-            	if (pts >= 20 && model.getGrille()[5][j] == 2) {
+            	if (pts >= 20 && model.getGrille()[5][j] == model.monst(0)) {
             		for (int k = 0; k <= numbMons(); k++) {
-            			model.getGrille()[1][randomY()] = 5;
+            			model.getGrille()[1][randomY()] = model.monst(1);
             		}
             	}
             }
@@ -70,20 +77,4 @@ public class Monster {
         this.vue = vue;
     }
 
-    /*public static void main(String[] args){
-        Monster monst = new Monster();
-        model gri = new model();
-        gri.initialise(gri.getGrille());
-
-        do {
-            gri.affiche(gri.getGrille());
-            monst.generateMonster();
-            monst.monsterDown();
-        }while(true);
-
-
-
-    }
-
-*/
 }
