@@ -11,7 +11,6 @@ public class Monster {
     private XSpaceVue vue = null;
     private static int life = 3;
     private Random rand = new Random();
-    private static int pts = 0;
     public Monster(Grille m){
         model = m;
     }
@@ -27,9 +26,14 @@ public class Monster {
 
 
     public void monsters() {
-    	if (pts < 20) {
+    	if (Vaisseau.getPts() < 20) {
             for (int k = 0; k <= numbMons(); k++) {
                 model.getGrille()[1][randomY()] = model.monst(0);
+            }
+        }
+    	if(Vaisseau.getPts() >= 20){
+            for (int k = 0; k <= numbMons(); k++) {
+                model.getGrille()[1][randomY()] = model.monst(1);
             }
         }
     }
@@ -62,17 +66,17 @@ public class Monster {
             }
         }
     }
-    public void waves() {
+   /* public void waves() {
     	for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-            	if (pts >= 20 && model.getGrille()[5][j] == model.monst(0)) {
+            	if (Vaisseau.getPts() == 20) {
             		for (int k = 0; k <= numbMons(); k++) {
             			model.getGrille()[1][randomY()] = model.monst(1);
             		}
             	}
             }
     	}
-    }
+    }*/
     public void addView(XSpaceVue vue){
         this.vue = vue;
     }
