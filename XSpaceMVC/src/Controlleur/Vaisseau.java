@@ -121,7 +121,7 @@ public class Vaisseau {
                     case 3 : model.getGrille()[i][j] =model.getVide();
                               model.getGrille()[i-1][j] =model.getLaser();
                               if(pts<=20){
-                                  model.getGrille()[i-1][j] =model.getLaser();
+                                  model.getGrille()[i-1][j ] =model.getLaser();
 
                               }
                               /*if(pts<=50){

@@ -26,16 +26,16 @@ public class Monster {
 
 
     public void monsters() {
-    	if (Vaisseau.getPts() < 20) {
+        if (Vaisseau.getPts() < 20) {
             for (int k = 0; k <= numbMons(); k++) {
                 model.getGrille()[1][randomY()] = model.monst(0);
             }
         }
-    	if(Vaisseau.getPts() >= 20){
+    	/*if(Vaisseau.getPts() >= 20){
             for (int k = 0; k <= numbMons(); k++) {
                 model.getGrille()[1][randomY()] = model.monst(1);
             }
-        }
+        }*/
     }
     public void monsterDown(){
         for (int i = 0; i < 10; i++) {
@@ -66,17 +66,15 @@ public class Monster {
             }
         }
     }
-   /* public void waves() {
-    	for (int i = 0; i < 10; i++) {
+    public void waves() {
+    	for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 10; j++) {
-            	if (Vaisseau.getPts() == 20) {
-            		for (int k = 0; k <= numbMons(); k++) {
-            			model.getGrille()[1][randomY()] = model.monst(1);
-            		}
+            	if (Vaisseau.getPts()<=20) {
+            			model.getGrille()[2][randomY()] = model.monst(1);
             	}
             }
     	}
-    }*/
+    }
     public void addView(XSpaceVue vue){
         this.vue = vue;
     }
