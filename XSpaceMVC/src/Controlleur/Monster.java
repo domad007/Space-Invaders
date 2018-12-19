@@ -6,7 +6,9 @@ import java.util.Random;
 
 
 public class Monster {
-
+    /**
+     * Variables d instance
+     */
     private Grille model;
     private XSpaceVue vue = null;
     private static int life = 3;
@@ -15,28 +17,44 @@ public class Monster {
         model = m;
     }
 
+    /**
+     * Generation d un nombre random de monstres
+     * Generation entre 3 et 5 monstres
+     * @return le nombre de monstres random
+     */
     public int numbMons(){
         int mons = 3+rand.nextInt(5-3);
         return mons;
     }
+
+    /**
+     * Generation d une positions random sur l axe Y de la grille
+     * Generation d une position random sur toute la longueur de l axe Y
+     * @return la position
+     */
     public int randomY(){
         int y = rand.nextInt(10-0);
         return y;
     }
 
-
+    /**
+     * Generation d un nombre random des monstres sur l axe Y
+     * Chaque monstre se genere avec une position random sur l axe Y
+     */
     public void monsters() {
         if (Vaisseau.getPts() < 20) {
             for (int k = 0; k <= numbMons(); k++) {
                 model.getGrille()[1][randomY()] = model.monst(0);
             }
         }
-    	/*if(Vaisseau.getPts() >= 20){
-            for (int k = 0; k <= numbMons(); k++) {
-                model.getGrille()[1][randomY()] = model.monst(1);
-            }
-        }*/
     }
+
+    /**
+     * Descente des monstres ligne par ligne pour les vagues
+     * Lorsque les monstres descendent tout en bas de la grille, elles disparaissent et le vaisseau perds des vies
+     * 1 monstre en bas est egal a une perte de vie
+     * La partie se termine lorsque le vaisseau a perdu 3 points de vie
+     */
     public void monsterDown(){
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -66,6 +84,11 @@ public class Monster {
             }
         }
     }
+
+    /**
+     * Generation des vagues sur l axe Y de maniere random
+     * Lorsqu on atteint 20 points la seconde vague apparait
+     */
     public void waves() {
     	for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 10; j++) {
@@ -75,6 +98,10 @@ public class Monster {
             }
     	}
     }
+
+    /**
+     * On ajoute la vue sur le controlleur
+     */
     public void addView(XSpaceVue vue){
         this.vue = vue;
     }
