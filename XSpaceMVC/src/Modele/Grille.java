@@ -25,6 +25,8 @@ public class Grille extends Observable {
     public char monst(int index){
         monsters.put(0,'O');
         monsters.put(1, 'L');
+        monsters.put(2, 'P');
+        monsters.put(3, 'T');
         return monsters.get(index);
     }
 
@@ -59,13 +61,18 @@ public class Grille extends Observable {
                     case 1:  System.out.print('X') ; break;
                     case 2:  System.out.print('V') ; break;
                     case 3:  System.out.print('|') ; break;
-                    case 5:  System.out.print('L') ; break;
                 }
                 if(cellule == monst(0)){
                     System.out.print(monst(0));
                 }
                 if(cellule == monst(1)){
                     System.out.print(monst(1));
+                }
+                if(cellule == monst(2)){
+                    System.out.print(monst(2));
+                }
+                if(cellule == monst(3)){
+                    System.out.print(monst(3));
                 }
 
                 System.out.print("|");

@@ -37,36 +37,17 @@ public class XSpaceVueConsole extends XSpaceVue implements Observer {
      * Une sorte de main mais sans le main
      */
     public void play() {
-        /*model.initialise(model.getGrille());
+         model.initialise(model.getGrille());
+        model.getGrille()[14][4] = 1;
         //controllerVaiss.secondPlayer();
-        model.getGrille()[14][4] = 1;
         controllerMonst.monsters();
-        do{
+        while(true){
             model.affiche(model.getGrille());
-            //controllerMonst.monsters();
-            // controllerMonst.waves();
             controllerVaiss.moveVaiss();
-            controllerVaiss.points();
+            controllerMonst.waves();
             controllerMonst.monsterDown();
+            controllerVaiss.points();
             controllerVaiss.attack();
-        } while(true);*/
-        model.initialise(model.getGrille());
-        model.getGrille()[14][4] = 1;
-        controllerMonst.monsters();
-        Thread play = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                model.initialise(model.getGrille());
-                model.getGrille()[14][4] = 1;
-                controllerMonst.monsters();
-                model.affiche(model.getGrille());
-                while(true){
-                    controllerVaiss.moveVaiss();
-                    controllerVaiss.points();
-                    controllerMonst.monsterDown();
-                    controllerVaiss.attack();
-                }
-            }
-        });play.start();
+        }
     }
 }

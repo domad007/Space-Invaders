@@ -18,6 +18,7 @@ class MonsterTest {
      */
     void monsters() {
         monst.monsters();
+        //grille.affiche(grille.getGrille());
         assertEquals(grille.monst(0), grille.getGrille()[1][1]);
 
     }
@@ -31,6 +32,10 @@ class MonsterTest {
         grille.getGrille()[2][1] = grille.monst(0);
         monst.monsterDown();
         assertEquals(grille.monst(0), grille.getGrille()[3][1]);
+        grille.getGrille()[3][1] = grille.monst(1);
+        monst.monsterDown();
+        assertEquals(grille.monst(1), grille.getGrille()[4][1]);
+
     }
 
     /**
@@ -40,8 +45,14 @@ class MonsterTest {
      */
     @Test
     void waves() {
-        monst.waves();
+        grille.getGrille()[5][1] = grille.monst(0);
+        //monst.waves();
         grille.affiche(grille.getGrille());
         assertEquals(grille.monst(1), grille.getGrille()[2][5]);
+    }
+
+    @Test
+    void monstLife() {
+
     }
 }

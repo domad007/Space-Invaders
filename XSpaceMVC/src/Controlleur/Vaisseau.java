@@ -1,10 +1,7 @@
 package Controlleur;
 import Modele.Grille;
 import Vue.XSpaceVue;
-
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
+import Controlleur.Monster;
 import java.util.Scanner;
 
 
@@ -28,7 +25,7 @@ public class Vaisseau{
      */
     public void moveVaiss(){
         scanner = new Scanner(System.in);
-        switch (scanner.nextLine()) {
+        switch (scanner.nextLine()){
             case "q" :
                 left();
                 break;
@@ -133,8 +130,27 @@ public class Vaisseau{
             for (int j = 0; j < 10; j++) {
                 if(model.getGrille()[i][j] == model.getLaser() && model.getGrille()[i-1][j] == model.monst(0)){
                     pts+=10;
-                    System.out.println(pts);
-                    //System.out.print(" points");
+                    System.out.println("Points: "+pts);
+                }
+                if(model.getGrille()[i][j] == model.getLaser() && model.getGrille()[i-1][j] == model.monst(1)){
+                    pts+=20;
+                    System.out.println("Points: "+pts);
+                }
+                if(model.getGrille()[i][j] == model.getLaser() && model.getGrille()[i-1][j] == model.monst(2)){
+                    pts+=30;
+                    System.out.println("Points: "+pts);
+                }
+                else if(model.getGrille()[14][j] ==model.monst(0) || model.getGrille()[14][j] ==model.monst(1) || model.getGrille()[14][j] ==model.monst(2)){
+                    model.getGrille()[14][j] =model.getVide();
+                    life -=1;
+                    System.out.println("Il vous reste: "+life +" vies");
+                }
+                else if(model.getGrille()[14][j] ==model.monst(3)){
+                    life = 0;
+                }
+                else if(life == 0){
+                    System.out.println("Vous avez perdu");
+                    System.exit(0);
                 }
             }
         }
@@ -157,12 +173,12 @@ public class Vaisseau{
                               model.getGrille()[i-1][j] =model.getLaser();
                               break;
                 }
-                if(model.getGrille()[i][9] == model.getLaser()){
+                /*if(model.getGrille()[i][9] == model.getLaser()){
                     model.getGrille()[i][9] = model.getVide();
                 }
                 if(model.getGrille()[i][0] == model.getLaser()){
                     model.getGrille()[i][0] = model.getVide();
-                }
+                }*/
                 if(model.getGrille()[1][j] == model.getLaser()){
                     model.getGrille()[1][j] = model.getVide();
                 }

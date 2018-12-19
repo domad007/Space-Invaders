@@ -59,7 +59,7 @@ class VaisseauTest {
     @Test
     void obRightSide() {
         grille.getGrille()[5][6] = grille.getVaisseau();
-        vaiss.obRightSide();
+        //vaiss.obRightSide();
         assertEquals(grille.getLaser(),grille.getGrille()[4][7]);
     }
 
@@ -69,7 +69,7 @@ class VaisseauTest {
     @Test
     void obLeftSide() {
         grille.getGrille()[5][6] = grille.getVaisseau();
-        vaiss.obLeftSide();
+        //vaiss.obLeftSide();
         assertEquals(grille.getLaser(),grille.getGrille()[4][5]);
     }
 }
