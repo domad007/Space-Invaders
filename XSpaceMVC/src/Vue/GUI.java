@@ -50,26 +50,36 @@ public class GUI {
 		soloBtn.setBackground(new Color(51, 51, 255));
 		soloBtn.setIcon(new ImageIcon("C:\\Users\\user\\Downloads\\X-Space-master\\GUI\\Ecran D'accueil\\Calque 2.png"));
 		soloBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {		///////////////
 			}
 		});
-		soloBtn.setBounds(258, 241, 287, 98);
+		soloBtn.setBounds(275, 246, 249, 86);
 		frame.getContentPane().add(soloBtn);
 		
 		JButton multiBtn = new JButton("Multi");
 		multiBtn.setIcon(new ImageIcon("C:\\Users\\user\\Downloads\\X-Space-master\\GUI\\Ecran D'accueil\\Calque 3.png"));
-		multiBtn.setBounds(229, 361, 316, 98);
+		multiBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		/////////////
+				
+			}
+		});
+		multiBtn.setBounds(275, 377, 256, 65);
 		frame.getContentPane().add(multiBtn);
 		
 		JButton paramBtn = new JButton("param");
+		paramBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	////////////////
+			}
+		});
 		paramBtn.setIcon(new ImageIcon("C:\\Users\\user\\Downloads\\X-Space-master\\GUI\\Ecran D'accueil\\Calque 4.png"));
-		paramBtn.setBounds(743, 0, 53, 52);
+		paramBtn.setBounds(757, 0, 39, 44);
 		frame.getContentPane().add(paramBtn);
 		
 		JLabel lblBackground = new JLabel("background");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\user\\Downloads\\X-Space-master\\GUI\\Ecran D'accueil\\Calque 1.png"));
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\user\\Downloads\\X-Space-master\\GUI\\Ecran D'accueil\\accueilpetit.png"));
 		lblBackground.setBounds(0, -109, 1248, 700);
 		frame.getContentPane().add(lblBackground);
+		
 		
 		}
 	}
