@@ -4,7 +4,6 @@ import Controlleur.Monster;
 import Controlleur.Vaisseau;
 import Modele.Grille;
 
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,8 +27,7 @@ public class XSpaceVueConsole extends XSpaceVue implements Observer {
      * @param arg
      */
     public void update(Observable o, Object arg){
-       System.out.println( model.getGrille());
-
+       model.getGrille();
     }
 
     /**

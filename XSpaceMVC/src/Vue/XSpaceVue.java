@@ -23,6 +23,7 @@ public abstract class XSpaceVue implements Observer {
         this.model = model;
         this.controllerVaiss = controllerVaiss;
         this.controllerMonst = controllerMonst;
+        model.addObserver(this);
     }
 
 
