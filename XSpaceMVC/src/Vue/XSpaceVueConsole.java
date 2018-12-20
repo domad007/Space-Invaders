@@ -27,7 +27,7 @@ public class XSpaceVueConsole extends XSpaceVue implements Observer {
      * @param arg
      */
     public void update(Observable o, Object arg){
-       model.getGrille();
+        System.out.print(model.getGrille());
     }
 
     /**
@@ -42,8 +42,8 @@ public class XSpaceVueConsole extends XSpaceVue implements Observer {
         while(true){
             model.affiche(model.getGrille());
             controllerVaiss.moveVaiss();
-            controllerMonst.waves();
             controllerMonst.monsterDown();
+            controllerMonst.waves();
             controllerVaiss.points();
             controllerVaiss.attack();
         }

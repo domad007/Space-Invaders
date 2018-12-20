@@ -15,7 +15,6 @@ public class XSpaceMVC {
         Vaisseau vaissVueCons = new Vaisseau(griMod);
         Monster monstVueCons = new Monster(griMod);
 
-
         GUI gui = new GUI(griMod,vaissVueCons, monstVueCons);
         vaissVueCons.addView(gui);
         monstVueCons.addView(gui);
@@ -23,6 +22,7 @@ public class XSpaceMVC {
         XSpaceVueConsole vueCons = new XSpaceVueConsole(griMod, vaissVueCons, monstVueCons);
         vaissVueCons.addView(vueCons);
         monstVueCons.addView(vueCons);
+
     }
 
     public static void main(String[] args){

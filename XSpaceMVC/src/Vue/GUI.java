@@ -57,7 +57,7 @@ public class GUI extends XSpaceVue{
 		soloBtn.setIcon(new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Acceuil\\solo.png"));
 		soloBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {		///////////////
-				new GUI2(model,controllerVaiss,controllerMonst).solo();
+				new GUI2(model,controllerVaiss,controllerMonst).playy();
 			}
 		});
 		soloBtn.setBounds(275, 246, 249, 86);
