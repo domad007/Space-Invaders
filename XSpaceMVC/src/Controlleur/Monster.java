@@ -49,10 +49,11 @@ public class Monster {
 
 
     /**
-     * Descente des monstres ligne par ligne pour les vagues
+     * Descente des monstres un par un
      * Lorsque les monstres descendent tout en bas de la grille, elles disparaissent et le vaisseau perds des vies
      * 1 monstre en bas est egal a une perte de vie
      * La partie se termine lorsque le vaisseau a perdu 3 points de vie
+     *
      */
     public void monsterDown() {
         Thread moveEnn = new Thread(new Runnable() {

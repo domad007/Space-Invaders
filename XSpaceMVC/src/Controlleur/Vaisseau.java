@@ -1,7 +1,6 @@
 package Controlleur;
 import Modele.Grille;
 import Vue.XSpaceVue;
-import Controlleur.Monster;
 import java.util.Scanner;
 
 
@@ -22,6 +21,7 @@ public class Vaisseau{
      * Deplacement du vaisseau ainsi que les tirs obliques
      * La console detecte qu une touche a ete appuye et deplace soit le vaisseau a gauche ou a droite
      * Meme chose pour les tirs obliques, lorsqu on appuie sur le boutton un tir oblique a ete lache
+     * On lance un thread pour lancer le programme en synchrone avec le GUI
      */
     public void moveVaiss(){
         Thread move = new Thread(new Runnable() {
@@ -66,47 +66,8 @@ public class Vaisseau{
                             obLeftSide();
                             break;
                     }
-            }
+                }
         }); move.run();
-        /*scanner = new Scanner(System.in);
-        switch (scanner.nextLine()){
-            case "q" :
-                left();
-                break;
-                case "d":
-                    right();
-                    break;
-                case "Q":
-                    left();
-                    break;
-                case "D":
-                    right();
-                    break;
-                case "k" :
-                    left1();
-                    break;
-                case "l":
-                    right1();
-                    break;
-                case "K" :
-                    left1();
-                    break;
-                case "L":
-                    right1();
-                    break;
-                case "e":
-                    obRightSide();
-                    break;
-                case "E":
-                    obRightSide();
-                    break;
-                case "A" :
-                    obLeftSide();
-                    break;
-                case "a" :
-                    obLeftSide();
-                    break;
-                    }*/
     }
 
     /**

@@ -16,26 +16,13 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class GUI extends XSpaceVue{
-
+	/**
+	 * Variable d instance pour afficher le GUI
+	 */
 	private JFrame frame;
 	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI window = new GUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the application.
+	 * On mets des constructeurs veneant du XSpaceVue
+	 * Elle permet au controlleur et au modele de suivre ce qui ce passe dans le GUI
 	 */
 	public GUI(Grille model, Vaisseau controllerVaiss, Monster controllerMonst) {
 		super(model, controllerVaiss, controllerMonst);
@@ -43,7 +30,10 @@ public class GUI extends XSpaceVue{
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Le menu du GUI se trouve ici
+	 * On reprend la classe GUI2 qui va servir du jeu
+	 * On peut jouer en multijoueur avec des sockets
+	 * On as la possibilite de quitter le jeu
 	 */
 	public void initialize() {
 		frame = new JFrame();
@@ -57,7 +47,7 @@ public class GUI extends XSpaceVue{
 		soloBtn.setIcon(new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Acceuil\\solo.png"));
 		soloBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {		///////////////
-				new GUI2(model,controllerVaiss,controllerMonst).playy();
+				new GUI2(model,controllerVaiss,controllerMonst).playy(); //Sur ce boutton la on affiche le jeu
 			}
 		});
 		soloBtn.setBounds(275, 246, 249, 86);
@@ -67,7 +57,7 @@ public class GUI extends XSpaceVue{
 		multiBtn.setIcon(new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Acceuil\\multi.png"));
 		multiBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		/////////////
-				
+																//Activation du socket sur ce boutton ci et lancement du jeu a 2
 			}
 		});
 		multiBtn.setBounds(275, 377, 256, 65);
@@ -76,7 +66,7 @@ public class GUI extends XSpaceVue{
 		JButton paramBtn = new JButton("param");
 		paramBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	////////////////
-			}
+			}												//On peut quitter le jeu ici
 		});
 		paramBtn.setIcon(new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Acceuil\\param.png"));
 		paramBtn.setBounds(757, 0, 39, 44);
