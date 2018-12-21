@@ -4,7 +4,10 @@ import Controlleur.Vaisseau;
 import Modele.Grille;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Observable;
+import java.util.Scanner;
 
 public class GUI2 extends XSpaceVue{
     /**
@@ -22,13 +25,15 @@ public class GUI2 extends XSpaceVue{
      * Image pour chaque monstre ainsi que le vide
      * Image pour le vaisseau ainsi que son laser
      */
-    private ImageIcon monst1 = new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Monster\\Monster.png");
-    private ImageIcon monst2 = new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Monster\\monster2.png");
-    private ImageIcon monst3 = new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Boss\\boss1.png");
-    private ImageIcon vide = new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Monster\\font.png");
-    private ImageIcon vaiss = new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\SpaceShip\\spaceship2.png");
-    private ImageIcon laser = new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\SpaceShip\\laser.png");
+    private ImageIcon monst1 = new ImageIcon("C:\\Users\\adeli\\OneDrive\\Documents\\GitHub\\X-Space\\GUI\\Monster\\Monster.png");
+    private ImageIcon monst2 = new ImageIcon("C:\\Users\\adeli\\OneDrive\\Documents\\GitHub\\X-Space\\GUI\\Monster\\monster2.png");
+    private ImageIcon monst3 = new ImageIcon("C:\\Users\\adeli\\OneDrive\\Documents\\GitHub\\X-Space\\GUI\\Boss\\boss4.png");
+    private ImageIcon vide = new ImageIcon("C:\\Users\\adeli\\OneDrive\\Documents\\GitHub\\X-Space\\GUI\\vide.png");
+    private ImageIcon vaiss = new ImageIcon("C:\\Users\\adeli\\OneDrive\\Documents\\GitHub\\X-Space\\GUI\\SpaceShip\\spaceship2.png");
+    private ImageIcon laser = new ImageIcon("C:\\Users\\adeli\\OneDrive\\Documents\\GitHub\\X-Space\\GUI\\laser.png");
 
+    
+    private KeyListener listener;
     /**
      * Creation du GUI
      * Creation d une grille pour tout le GUI
@@ -37,6 +42,9 @@ public class GUI2 extends XSpaceVue{
         frame = new JFrame("XSpace");
         frame.setTitle("XSpace");
         frame.setSize(700, 1100);
+        frame.setFocusable(true);
+        frame.requestFocus();
+        frame.addKeyListener(listener);
         for(int i=0; i<cases.length; i++) {
             for(int j=0; j<cases[i].length; j++ ) {
                 cases[i][j] = new JLabel();
@@ -76,6 +84,78 @@ public class GUI2 extends XSpaceVue{
         frame.getContentPane().add(gamePanel);
         frame.setVisible(true);
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    public void keyPressed(KeyEvent key) {
+    	switch(key.getKeyCode()) {
+    	case KeyEvent.VK_Q:
+    	left();
+    	break;
+    	case KeyEvent.VK_D:
+    	right();
+        break;
+    	}
+    }
+    
+    
+    
+    public void left(){
+        for(int i =0; i<15; i++){
+            for(int j = 0; j<10; j++){
+                if( model.getGrille()[i][j] == model.getVaisseau()  && model.getGrille()[i][j-1] == model.getVide()){
+                    model.getGrille()[i][j] = model.getVide();
+                    int newPos = j-1;
+                    model.getGrille()[i][newPos] =model.getVaisseau() ;
+                    return;
+                }
+                if(model.getGrille()[i][j] ==model.getVaisseau() &&model.getGrille()[i][j-1] != model.getVide()){
+                    model.setVaisseau(model.getGrille()[i][j-1]);
+                    model.getGrille()[i][j] = model.getVaisseau2();
+                    return;
+                }
+                else if(model.getGrille()[14][0] == model.getVaisseau()){
+                    model.getGrille()[14][0] = model.getVaisseau();
+                    return;
+                }
+            }
+        }
+    }
+    
+    public void right(){
+        for(int i =0; i<15; i++){
+            for(int j = 0; j<10; j++){
+                if(model.getGrille()[i][j] ==model.getVaisseau() && model.getGrille()[i][j+1] == model.getVide()){
+                    model.getGrille()[i][j] = model.getVide();
+                    int newPos = j + 1;
+                    model.getGrille()[i][newPos] =model.getVaisseau();
+                    return;
+                }
+                if(model.getGrille()[i][j] ==model.getVaisseau() &&model.getGrille()[i][j+1] != model.getVide()){
+                    model.getGrille()[i][j+1] = model.getVaisseau();
+                    model.getGrille()[i][j] = model.getVaisseau2();
+                    return;
+                }
+                else if(model.getGrille()[i][9] == model.getVaisseau()){
+                    model.getGrille()[i][9] = model.getVaisseau();
+                    return;
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * On lance le jeu qui est coordonne avec la console
