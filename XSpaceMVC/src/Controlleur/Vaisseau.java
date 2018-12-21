@@ -17,58 +17,6 @@ public class Vaisseau{
     }
     private static int pts = 0;
 
-    /**
-     * Deplacement du vaisseau ainsi que les tirs obliques
-     * La console detecte qu une touche a ete appuye et deplace soit le vaisseau a gauche ou a droite
-     * Meme chose pour les tirs obliques, lorsqu on appuie sur le boutton un tir oblique a ete lache
-     * On lance un thread pour lancer le programme en synchrone avec le GUI
-     */
-    public void moveVaiss(){
-        Thread move = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                    scanner = new Scanner(System.in);
-                    switch (scanner.nextLine()) {
-                        case "q":
-                            left();
-                            break;
-                        case "d":
-                            right();
-                            break;
-                        case "Q":
-                            left();
-                            break;
-                        case "D":
-                            right();
-                            break;
-                        case "k":
-                            left1();
-                            break;
-                        case "l":
-                            right1();
-                            break;
-                        case "K":
-                            left1();
-                            break;
-                        case "L":
-                            right1();
-                            break;
-                        case "e":
-                            obRightSide();
-                            break;
-                        case "E":
-                            obRightSide();
-                            break;
-                        case "A":
-                            obLeftSide();
-                            break;
-                        case "a":
-                            obLeftSide();
-                            break;
-                    }
-                }
-        }); move.run();
-    }
 
     /**
      * Deplacement du vaisseau vers la gauche
@@ -178,12 +126,12 @@ public class Vaisseau{
                               model.getGrille()[i-1][j] =model.getLaser();
                               break;
                 }
-                /*if(model.getGrille()[i][9] == model.getLaser()){
+                if(model.getGrille()[i][9] == model.getLaser()){
                     model.getGrille()[i][9] = model.getVide();
                 }
                 if(model.getGrille()[i][0] == model.getLaser()){
                     model.getGrille()[i][0] = model.getVide();
-                }*/
+                }
                 if(model.getGrille()[1][j] == model.getLaser()){
                     model.getGrille()[1][j] = model.getVide();
                 }

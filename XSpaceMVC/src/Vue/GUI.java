@@ -46,8 +46,9 @@ public class GUI extends XSpaceVue{
 		soloBtn.setBackground(new Color(51, 51, 255));
 		soloBtn.setIcon(new ImageIcon("C:\\Users\\DOMINIK-PC\\Downloads\\GUI\\Acceuil\\solo.png"));
 		soloBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {		///////////////
-				new GUI2(model,controllerVaiss,controllerMonst).playy(); //Sur ce boutton la on affiche le jeu
+			public void actionPerformed(ActionEvent arg0) {///////////////
+				GUI2 gui2 = new GUI2(model,controllerVaiss,controllerMonst);//Sur ce boutton la on affiche le jeu
+				gui2.playy();
 			}
 		});
 		soloBtn.setBounds(275, 246, 249, 86);
